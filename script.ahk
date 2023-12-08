@@ -3,6 +3,7 @@
 InstallMouseHook
 InstallKeybdHook
 #include *i %A_LineFile%\../FixSocials-AHK/FixSocials.ahk
+#Warn VarUnset, off
 
 ; use mouse sidebutton as turbo auto-clicker
 XButton1:: {
@@ -33,15 +34,10 @@ ToggleCmder() {
     ; Check if Cmder is running
     if (ProcessExist("Cmder.exe")) {
         ; Send the hotkey to toggle Cmder visibility (Ctrl + `)
-        Send({Ctrl Down}`{Ctrl Up})
+        Send "^``"
     } else {
         ; Run Cmder if not already running
         Run "C:\cmder\Cmder.exe"
     }
 }
 
-; Function to check if a process is running
-ProcessExist(ProcessName) {
-    Process Exist, ProcessName
-    return ErrorLevel
-}
